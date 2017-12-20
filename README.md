@@ -1,6 +1,6 @@
 //js树形查找
 
-function getName(arr, id) {
+ function getName(arr, id) {
 
         var num = arr.length;
 
@@ -9,7 +9,10 @@ function getName(arr, id) {
                 return arr[i].name
             } else {
                 if (arr[i].children) {
-                    return getName(arr[i].children, id)
+                    var name = getName(arr[i].children, id)
+                    if(name){
+                        return name;
+                    }
                 }
             }
         }
@@ -33,6 +36,21 @@ function getName(arr, id) {
             ]
         },
         {
+            id: 6,
+            name: 'aa',
+            children: [
+                {
+                    id: 7,
+                    name: 'bb'
+                },
+                {
+                    id: 8,
+                    name: 'dd'
+                }
+
+            ]
+        },
+        {
             id: 2,
             name: 'b',
             children: []
@@ -43,5 +61,7 @@ function getName(arr, id) {
             children: []
         }
     ]
+
+    console.log(getName(trees, 8))
 
     console.log(getName(trees, 5))
